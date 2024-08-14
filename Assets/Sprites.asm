@@ -1,10 +1,10 @@
 ; ========================================
 ; Sprites.asm
 ; ========================================
-; (C) 2019 Manoel Neto - tremyen@gmail.com
+; (C) 2019 Manoel Neto
 ; Definicao dos sprites usados no jogo
 ; ========================================
-AlieSprites:
+Sprites:
 ; Nave (2 sprites)
 ; --- 0 => 32 bytes
 ; color 1
