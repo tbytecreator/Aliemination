@@ -6,8 +6,8 @@
 ; =============================================================================
 __VERSION:  equ 1
 __RELEASE:  equ 0
-include "Hardware\BIOSMSX.ASM"
-include "Assets\Constantes.asm"
+include "Hardware/BiosMSX.asm"
+include "Assets/Constantes.asm"
 
 org romArea
 	db "AB"                     ; identifica como ROM
@@ -61,13 +61,13 @@ include "AtualizarHud.asm"
 ; =============================================================================
 ; FIM PROGRAMA
 ; =============================================================================
-include "Assets\Variaveis.asm"
-include "Assets\Sprites.asm"
-include "Assets\Strings.asm"
-include "Assets\Library.asm"
-include "Hardware\AY38910.ASM"
-include "Hardware\TMS9918.ASM"
-include "Hardware\KEYBOARD.ASM"
+include "Assets/Variaveis.asm"
+include "Assets/Sprites.asm"
+include "Assets/Strings.asm"
+include "Assets/Library.asm"
+include "Hardware/AY38910.ASM"
+include "Hardware/TMS9918.ASM"
+include "Hardware/KEYBOARD.ASM"
 ; =============================================================================
 ; Padding
 ; =============================================================================

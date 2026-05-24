@@ -198,7 +198,7 @@ LoadSpritesTable:
 	push hl
 		ld bc,192             	; bytes a copiar
   		ld de,ADRSPRITETBL	    ; tabela de sprites na VRAM
-  		ld hl,AlieSprites		; localização na RAM
+  		ld hl,Sprites		; localização na RAM
   		call LDIRVM             ; copio a tabela de sprites
 	pop hl
 	pop de
