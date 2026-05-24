@@ -20,8 +20,8 @@ org romArea
 startCode:  
   	call Inicializar          	; Inicializar o ambiente do jogo
   	call TelaInicial          	; tela de inicio do jogo
-GameLoop:
 	call PassarDeNivel			; passa para a proxima fase
+GameLoop:
 	call GerarAliens			; sorteia os aliens de acordo com a fase
 DesenharQuadro:
 	ld a,(NumCidades)			; pega o numero de cidades
@@ -29,7 +29,7 @@ DesenharQuadro:
 	jp z,FimDoJogo				; finaliza o jogo
 	ld a,(NumAliens)			; pega o numero de aliens
 	cp 0 						; se nao tem mais aliens
-	jp z,FimDoJogo				; iniciamos um novo nivel
+	jp z,NovoNivel				; iniciamos um novo nivel
 	call PegarComandos			; pega a entrada de teclado do jogador
 	call MoverTorpedos			; Atualiza coordenadas dos torpedos
 	call MoverAliens			; Atualiza coordenadas dos Aliens
@@ -47,6 +47,9 @@ DesenharQuadro:
 	jp DesenharQuadro			; loop de desenho do frame
 FimDoJogo:
 	jp startCode				; recomeca o jogo
+NovoNivel:
+	call PassarDeNivel			; passa para a proxima fase
+	jp GameLoop					; inicia o loop do jogo
 
 include "Inicializar.asm"
 include "TelaInicial.asm"
