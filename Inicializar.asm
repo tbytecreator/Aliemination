@@ -34,6 +34,7 @@ noPalAdjust:
   ld (NumVelAlien),a          ; Carrega a velocidade do Alien
   xor a                       ; Zera A
   ld (NumNivel),a             ; zera o nivel do jogo
+  ld (NumTorpedos),a          ; zera o numero de torpedos
   ld (NumAliens),a            ; zera o nuemro de aliens
   ld (NumContColuna1),a       ; zera os inimigos na coluna 1
   ld (NumContColuna2),a       ; zera os inimigos na coluna 2

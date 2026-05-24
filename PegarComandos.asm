@@ -46,6 +46,7 @@ Tiro:
   	jp z,AdicionaPosicao30
   	bit 3,a
   	jp z,AdicionaPosicao31
+  	jp FimAdicionarTorpedo			; todos os torpedos estao em uso
 AdicionaPosicao28:
     ld a,(NumPosYNave)      		; pegar posicao y da nave
     sub 16                 			; coordenada y = NumPosYNave-16
