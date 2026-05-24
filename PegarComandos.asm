@@ -17,7 +17,6 @@
 ; se o bit 7 esta ligado,direita foi pressionado
 ; =============================================================================
 PegarComandos:
-    xor a                     ; limpa o buffer
     ld a,8                    ; le a linha 8 para ver se as setas estao ligadas
     call Keyboard             ; carrega linha 8 no acumulador
     bit 0,a                   ; Se 0, adiciona um torpedo na posx da nave
@@ -105,9 +104,9 @@ Direita:
     ld d,a                    ; no registrador d
     ld hl,NumPosXNave         ; pega posicao x da nave
     ld a,(hl)                 ; prepara o acumulador para a conta
+    add a,d                   ; adiciona a velocidade a coordenada X
     cp 240                    ; A nave nao pode sair da tela
-    jp nc,PosMaximaDir        ; na posicao maxima, nao se move mais
-    add a,d                   ; tira a velocidade da coordenada X
+    jr nc,PosMaximaDir        ; se >= 240, nao atualiza
     ld (hl),a                 ; guarda a posicao da nave
 PosMaximaDir:
   pop af
@@ -120,9 +119,9 @@ Subir:
     ld d,a                    ; no registrador d
     ld hl,NumPosYNave         ; pega posicao y da nave
     ld a,(hl)                 ; prepara o acumulador para a conta
+    sub d                     ; subtrai a velocidade da coordenada y
     cp 70                     ; A nave nao pode sair da tela
-    jp c,PosMaximaSub         ; na posicao maxima, nao se move mais
-    sub d                     ; tira a velocidade da coordenada y
+    jr c,PosMaximaSub         ; se < 70, nao atualiza
     ld (hl),a                 ; guarda a posicao da nave
 PosMaximaSub:
   pop af
@@ -135,9 +134,9 @@ Descer:
     ld d,a                    ; no registrador d
     ld hl,NumPosYNave         ; pega posicao y da nave
     ld a,(hl)                 ; prepara o acumulador para a conta
+    add a,d                   ; adiciona a velocidade a coordenada y
     cp 165                    ; A nave nao pode sair da tela
-    jp nc,PosMaximaDes        ; na posicao maxima, nao se move mais
-    add a,d                   ; tira a velocidade da coordenada y
+    jr nc,PosMaximaDes        ; se >= 165, nao atualiza
     ld (hl),a                 ; guarda a posicao da nave
 PosMaximaDes:
   pop af
@@ -150,9 +149,9 @@ Esquerda:
     ld d,a                    ; no registrador d
     ld hl,NumPosXNave         ; pega posicao x da nave
     ld a,(hl)                 ; prepara o acumulador para a conta
+    sub d                     ; subtrai a velocidade da coordenada X
     cp 1                      ; A nave nao pode sair da tela
-    jp c,PosMaximaEsq         ; na posicao maxima, nao se move mais
-    sub d                     ; tira a velocidade da coordenada X
+    jr c,PosMaximaEsq         ; se < 1, nao atualiza
     ld (hl),a                 ; guarda a posicao da nave
 PosMaximaEsq:
   pop af
